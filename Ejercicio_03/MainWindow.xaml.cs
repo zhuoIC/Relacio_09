@@ -53,23 +53,30 @@ namespace Ejercicio_03
             {
                 int candidato = int.Parse(tbxAcertar.Text);
                 intentos++;
-                if (candidato == num)
+                if (candidato > 100 || candidato < 0)
                 {
-                    lblResultado.Content = "";
-                    MessageBox.Show("¡Has acertado el número!", "¡ENHORABUENA!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
-                    btnGenerar.IsEnabled = true;
-                    btnProbar.IsEnabled = false;
-                }
-                else if (candidato < num)
-                {
-                    lblResultado.Content = "NO, el número buscado es MAYOR";
-                    tbxAcertar.Focus();
+                    MessageBox.Show("El número a buscar es entre 0 y 100 incluidos", "¡Cuidado!", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 else
                 {
-                    lblResultado.Content = "NO, el número buscado es MENOR";
-                    tbxAcertar.Focus();
-                }
+                    if (candidato == num)
+                    {
+                        lblResultado.Content = "";
+                        MessageBox.Show("¡Has acertado el número en " + intentos + " intentos!", "¡ENHORABUENA!", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                        btnGenerar.IsEnabled = true;
+                        btnProbar.IsEnabled = false;
+                    }
+                    else if (candidato < num)
+                    {
+                        lblResultado.Content = "NO, el número buscado es MAYOR";
+                        tbxAcertar.Focus();
+                    }
+                    else
+                    {
+                        lblResultado.Content = "NO, el número buscado es MENOR";
+                        tbxAcertar.Focus();
+                    }
+                } 
             }
             catch (Exception ex)
             {
