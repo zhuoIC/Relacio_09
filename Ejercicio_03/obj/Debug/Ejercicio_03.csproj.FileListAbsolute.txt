@@ -1,0 +1,13 @@
+C:\Basura\Relacion_09\Ejercicio_03\bin\Debug\Ejercicio_03.exe.config
+C:\Basura\Relacion_09\Ejercicio_03\bin\Debug\Ejercicio_03.exe
+C:\Basura\Relacion_09\Ejercicio_03\bin\Debug\Ejercicio_03.pdb
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\Ejercicio_03.csprojResolveAssemblyReference.cache
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\MainWindow.baml
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\MainWindow.g.cs
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\App.g.cs
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\Ejercicio_03_MarkupCompile.cache
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\Ejercicio_03.g.resources
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\Ejercicio_03.Properties.Resources.resources
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\Ejercicio_03.csproj.GenerateResource.Cache
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\Ejercicio_03.exe
+C:\Basura\Relacion_09\Ejercicio_03\obj\Debug\Ejercicio_03.pdb
