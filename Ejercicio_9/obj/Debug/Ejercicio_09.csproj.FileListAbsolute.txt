@@ -11,3 +11,6 @@ C:\Basura\Relacion_09\Ejercicio_9\obj\Debug\Ejercicio_9.Properties.Resources.res
 C:\Basura\Relacion_09\Ejercicio_9\obj\Debug\Ejercicio_09.csproj.GenerateResource.Cache
 C:\Basura\Relacion_09\Ejercicio_9\obj\Debug\Ejercicio_9.exe
 C:\Basura\Relacion_09\Ejercicio_9\obj\Debug\Ejercicio_9.pdb
+C:\Repositorios\Relacion_09\Ejercicio_9\bin\Debug\Ejercicio_9.exe.config
+C:\Repositorios\Relacion_09\Ejercicio_9\obj\Debug\Ejercicio_9.exe
+C:\Repositorios\Relacion_09\Ejercicio_9\obj\Debug\Ejercicio_9.pdb
