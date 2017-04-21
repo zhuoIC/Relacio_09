@@ -1,0 +1,16 @@
+﻿<Window x:Class="Ejercicio_06.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Relación 09. Ejercicio 06" Height="230" Width="425">
+    <StackPanel>
+        <DockPanel Background="Black" Margin="20">
+            <Label Name="lblHora" Foreground="White" Content="00:00:00" HorizontalAlignment="Center" FontSize="60"/>
+        </DockPanel>
+        <DockPanel HorizontalAlignment="Center">
+            <Button Content="Marcha" IsEnabled="True" Name="btnMarcha" Width="60" HorizontalAlignment="Right" Margin="20,0,20,0" Click="btnMarcha_Click"/>
+            <Button Content="Paro" IsEnabled="False" Name="btnParo" Width="60" HorizontalAlignment="Right" Margin="0,0,20,0" Click="btnParo_Click"/>
+            <Button Content="Salir" Name="btnSalir" Width="60" HorizontalAlignment="Right" Margin="0,0,20,0" Click="btnSalir_Click"/>
+        </DockPanel>
+            <Label Name="lblFecha" Margin="0,20,0,0"></Label>
+    </StackPanel>
+</Window>

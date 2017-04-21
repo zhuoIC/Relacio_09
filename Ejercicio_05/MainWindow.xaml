@@ -1,0 +1,37 @@
+﻿<Window x:Class="Ejercicio_05.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Relación 09. Ejercicio 05" Height="350" Width="525">
+    <StackPanel>
+        <DockPanel>
+            <StackPanel>
+                <Label Content="Frase:"/>
+                <TextBox Width="400" Name="tbxIni"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Desplazamiento"/>
+                <ComboBox SelectedIndex="0" Name="cmbNCaracteres">
+                    <ComboBoxItem Content="1"/>
+                    <ComboBoxItem Content="2"/>
+                    <ComboBoxItem Content="3"/>
+                    <ComboBoxItem Content="4"/>
+                    <ComboBoxItem Content="5"/>
+                </ComboBox>
+            </StackPanel>
+        </DockPanel>
+            <StackPanel>
+                <Label>Original</Label>
+                <TextBox Name="tbxOri"/>
+            </StackPanel>
+        <StackPanel>
+            <Label>Encriptado</Label>
+            <TextBox Name="tbxEncrip"/>
+        </StackPanel>
+        <StackPanel>
+            <Label>Desencriptado</Label>
+            <TextBox Name="tbxDesencrip"/>
+        </StackPanel>
+        <Button Content="Encriptar" Width="60" HorizontalAlignment="Left" Margin="20" Name="btnEncrip" Click="btnEncrip_Click"></Button>
+
+    </StackPanel>
+</Window>
