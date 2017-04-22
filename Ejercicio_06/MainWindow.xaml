@@ -7,8 +7,8 @@
             <Label Name="lblHora" Foreground="White" Content="00:00:00" HorizontalAlignment="Center" FontSize="60"/>
         </DockPanel>
         <DockPanel HorizontalAlignment="Center">
-            <Button Content="Marcha" IsEnabled="True" Name="btnMarcha" Width="60" HorizontalAlignment="Right" Margin="20,0,20,0" Click="btnMarcha_Click"/>
-            <Button Content="Paro" IsEnabled="False" Name="btnParo" Width="60" HorizontalAlignment="Right" Margin="0,0,20,0" Click="btnParo_Click"/>
+            <Button Content="Marcha" IsEnabled="False" Name="btnMarcha" Width="60" HorizontalAlignment="Right" Margin="20,0,20,0" Click="btnMarcha_Click"/>
+            <Button Content="Paro" IsEnabled="True" Name="btnParo" Width="60" HorizontalAlignment="Right" Margin="0,0,20,0" Click="btnParo_Click"/>
             <Button Content="Salir" Name="btnSalir" Width="60" HorizontalAlignment="Right" Margin="0,0,20,0" Click="btnSalir_Click"/>
         </DockPanel>
             <Label Name="lblFecha" Margin="0,20,0,0"></Label>

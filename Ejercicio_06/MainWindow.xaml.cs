@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 //--------------------------------------
-using System.Threading;
+using System.Windows.Threading;
 
 namespace Ejercicio_06
 {
@@ -23,41 +23,54 @@ namespace Ejercicio_06
     public partial class MainWindow : Window
     {
         static DateTime fecha = DateTime.Now;
-        static int hora = fecha.Hour;
-        static int minuto = fecha.Minute;
-        static int segundo = fecha.Second;
-
+        int hora = fecha.Hour;
+        int minuto = fecha.Minute;
+        int segundo = fecha.Second;
+        DispatcherTimer temporizador;
         public MainWindow()
         {
             InitializeComponent();
             
             lblFecha.Content = fecha.ToLongDateString();
-            lblHora.Content = hora + ":" + minuto + ":" + segundo;
+            MostrarHora();
+            Encender();
         }
 
         private void Encender()
         {
-            do
+            temporizador = new DispatcherTimer();
+            temporizador.Interval = new TimeSpan(10000000);
+            temporizador.Start();
+            temporizador.Tick += temporizador_Tick;             
+        }
+
+        void temporizador_Tick(object sender, EventArgs e)
+        {
+            segundo++;
+            if (segundo == 60)
             {
-                while (hora <24)
-	            {
-                        while (minuto < 60)
-                        {
-                            while (segundo < 60)
-                            {
-                                if (btnMarcha.IsEnabled)
-                                {
-                                    break;
-                                }
-                                lblHora.Content = hora + ":" + minuto + ":" + segundo;
-                                Thread.Sleep(1000);
-                                segundo++;
-                            }
-                            minuto++;
-                        }
-                        hora++;
-                }                               
-            } while (btnParo.IsEnabled);
+                segundo = 0;
+                minuto++;
+                if (minuto == 60)
+                {
+                    minuto = 0;
+                    hora++;
+                    if (hora == 24)
+                    {
+                        hora = 0;
+                    }
+                }
+            }
+            MostrarHora();
+            if (segundo == 0 && minuto == 0 && hora == 0)
+            {
+                lblFecha.Content = fecha.AddDays(1).ToLongDateString();
+            }
+        }
+
+        void MostrarHora()
+        {
+            lblHora.Content = hora.ToString("00") + ":" + minuto.ToString("00") + ":" + segundo.ToString("00");
         }
 
         private void btnMarcha_Click(object sender, RoutedEventArgs e)
@@ -71,6 +84,7 @@ namespace Ejercicio_06
         {
             btnParo.IsEnabled = false;
             btnMarcha.IsEnabled = true;
+            temporizador.Stop();
         }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
