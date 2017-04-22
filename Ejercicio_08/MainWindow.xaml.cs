@@ -24,5 +24,15 @@ namespace Ejercicio_08
         {
             InitializeComponent();
         }
+
+        private void btnCalcSumPrimos_Click(object sender, RoutedEventArgs e)
+
+            double resultado = NPrimos();
+        }
+
+        double NPrimos(int numFIn)
+        {
+            
+        }
     }
 }

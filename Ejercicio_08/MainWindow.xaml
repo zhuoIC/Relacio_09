@@ -20,14 +20,19 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Label Content="Palindromo" Grid.Column="0" FontSize="18" HorizontalAlignment="Center"></Label>
-        <TextBox ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="24,0,28,0" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap"/>
-        <Button Content="Comprobar" Height="27" Width="80" VerticalAlignment="Top" Grid.Column="0" Margin="5" Grid.Row="6"/>
-        <ComboBox  Height="27" Grid.Row="6" Grid.Column="1">
+        <TextBox x:Name="tbxPalindromo" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="24,0,28,0" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="2" Grid.Column="0" TextWrapping="Wrap"/>
+        <Button x:Name="btnPalindromo" Content="Comprobar" Height="27" Width="80" VerticalAlignment="Top" Grid.Column="0" Margin="5" Grid.Row="6"/>
+        <ComboBox x:Name="cbxPalindromo"  Height="27" Grid.Row="6" Grid.Column="1">
             <ComboBoxItem Content="Ana lava lana."/>
             <ComboBoxItem Content="Odio oír ese río oído."/>
             <ComboBoxItem Content="Atar a la rata."/>
             <ComboBoxItem Content="A ti no, bonita."/>
             <ComboBoxItem Content="La ruta nos aportó otro paso natural."/>
         </ComboBox>
+        <Label Content="Entero positivo: " Grid.Column="2" HorizontalAlignment="Right"  Grid.Row="2" VerticalAlignment="Center"/>
+        <TextBox x:Name="tbxPrimos" Grid.Column="3" HorizontalAlignment="Left" Height="23" Grid.Row="2" MaxLength="10" VerticalAlignment="Center" Width="120"/>
+        <Label Content="Primeros N primos" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,10,0,0" Width="187" FontSize="18"/>
+        <Label x:Name="lblPrimos" Grid.Column="2" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" Margin="10" Grid.Row="4" Grid.RowSpan="2" VerticalContentAlignment="Center" Height="60" Width="223" FontSize="18"/>
+        <Button x:Name="btnCalcSumPrimos" Grid.ColumnSpan="2" Content="Calcular" Grid.Column="2" HorizontalAlignment="Center"  Grid.Row="3" VerticalAlignment="Top" Width="75" Click="btnCalcSumPrimos_Click"/>
     </Grid>
 </Window>

@@ -24,3 +24,6 @@ C:\Repositorios\Relacion_09\Ejercicio_04\obj\Debug\Ejercicio_04_MarkupCompile.ca
 C:\Repositorios\Relacion_09\Ejercicio_04\obj\Debug\Ejercicio_04.g.resources
 C:\Repositorios\Relacion_09\Ejercicio_04\obj\Debug\Ejercicio_04.Properties.Resources.resources
 C:\Repositorios\Relacion_09\Ejercicio_04\obj\Debug\Ejercicio_04.csproj.GenerateResource.Cache
+C:\Basura\Relacion_09\Ejercicio_04\bin\Debug\Ejercicio_04.exe.config
+C:\Basura\Relacion_09\Ejercicio_04\obj\Debug\Ejercicio_04.exe
+C:\Basura\Relacion_09\Ejercicio_04\obj\Debug\Ejercicio_04.pdb
