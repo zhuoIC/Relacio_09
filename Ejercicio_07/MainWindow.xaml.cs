@@ -72,19 +72,22 @@ namespace Ejercicio_07
             }
             catch (ArgumentNullException)
             {
+                VaciarGrid();
                 MessageBox.Show("Las matrices no están rellenas", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (FormatException)
+            catch (FormatException exp)
             {
-                MessageBox.Show("Has introducido uno o más carácteres no válidos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-
+                VaciarGrid();
+                MessageBox.Show("Has introducido uno o más carácteres no válidos"+ exp.HResult, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (OverflowException)
             {
+                VaciarGrid();
                 MessageBox.Show("Número introducido demasiado grande", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception e)
             {
+                VaciarGrid();
                 MessageBox.Show(e.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }

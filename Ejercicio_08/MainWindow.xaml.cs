@@ -54,9 +54,10 @@ namespace Ejercicio_08
         void MostrarResultado(List<int> resultado)
         {
             int contador = 1;
+            tbxResultado.Text = "";
             foreach (int primo in resultado)
             {
-                lblPrimos.Content = "{" + contador++ + "} → " + primo;
+                tbxResultado.Text += "{" + contador++ + "} → " + primo+"\r\n";
             }
         }
 
@@ -78,22 +79,85 @@ namespace Ejercicio_08
 
         bool EsPrimo(int candidato)
         {
+            bool encontrado = false;
             if (candidato > 1)
             {
-                for (int i = 1; i < candidato/2; i++)
+                for (int i = 2; i <= candidato/2; i++)
                 {
-                    if (i % 2 == 0) 
+                    if (candidato % i == 0) 
                     {
-                        return false;
+                        encontrado = true;
                     }
                 }
-                return true;
             }
             else
             {
-                return false;
+                encontrado = true;
             }
+            return !encontrado;
+        }
 
+        private void btnPalindromo_Click(object sender, RoutedEventArgs e)
+        {
+            if (tbxPalindromo.Text.Length > 0)
+            {
+                if (EsPalidromo(tbxPalindromo.Text))
+                {
+                    MessageBox.Show("Es palíndromo", "Resultado", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                }
+                else
+                {
+                    MessageBox.Show("No es palíndromo", "Resultado", MessageBoxButton.OK, MessageBoxImage.Asterisk);
+                }
+            } 
+        }
+
+        bool EsPalidromo(string texto)
+        {
+            char[] separador = new char[]{',', ';',' ','.'};
+            string[] cadenas = texto.ToUpper().Split(separador);
+            string contenido = string.Empty;
+            string candidato = string.Empty;
+            string reves = string.Empty;
+            foreach (string palabra in cadenas)
+            {
+                contenido += palabra;
+            }
+            foreach (char letra in contenido)
+            {
+                switch (letra)
+                {
+                    case 'Á':
+                        candidato += 'A';
+                        break;
+                    case 'É':
+                        candidato += 'E';
+                        break;
+                    case 'Í':
+                        candidato += 'I';
+                        break;
+                    case 'Ó':
+                        candidato += 'O';
+                        break;
+                    case 'Ú':
+                        candidato += 'U';
+                        break;
+                    default:
+                        candidato += letra;
+                        break;
+                }
+            }
+            for (int i = candidato.Length - 1; i >= 0; i--)
+            {
+                reves += candidato[i];
+            }
+            return candidato == reves;
+        }
+
+        private void cbxPalindromo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem seleccion = (ComboBoxItem) cbxPalindromo.Items[cbxPalindromo.SelectedIndex];
+            tbxPalindromo.Text = seleccion.Content.ToString();
         }
     }
 }

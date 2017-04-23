@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 //---------------------------------------------
+using System.Windows.Threading;
+using System.Threading;
 
 namespace Ejercicio_9
 {
@@ -24,6 +26,8 @@ namespace Ejercicio_9
         static int[] dado = new int[6];
         static Random rnd = new Random();
         int nTiradas = 0;
+        DispatcherTimer temporizador;
+
         static string[] imagenes = new string[] 
         { 
             @"..\..\Imagenes\1.png",
@@ -41,31 +45,30 @@ namespace Ejercicio_9
 
         private void btnTirar_Click(object sender, RoutedEventArgs e)
         {
-            TirarDado(1);
+            TirarDado();
         }
 
-        private void TirarDado(int nVeces)
+        private void TirarDado()
         {
-            int contador = 0;
             int resultado = 0;
-            while (nVeces > contador)
+            if (cbxSimular.IsChecked == true)
             {
-                resultado = rnd.Next(dado.Length);
-                dado[resultado]++;
-                MostrarResuLtado(resultado);
-                MostrarImagen(resultado);
-                contador++;
+                SimularTirada();
             }
+            resultado = rnd.Next(dado.Length);
+            dado[resultado]++;
+            MostrarResultado(resultado);
+            MostrarImagen(resultado);
             MostrarEstadistica();
         }
 
-        private void MostrarImagen(int resultado)
+        private void MostrarImagen(int indice)
         {
-            BitmapImage img = new BitmapImage(new Uri(System.IO.Path.GetFullPath(imagenes[resultado])));
+            BitmapImage img = new BitmapImage(new Uri(System.IO.Path.GetFullPath(imagenes[indice])));
             imgDado.Source = img;
         }
 
-        private void MostrarResuLtado(int resultado)
+        private void MostrarResultado(int resultado)
         {
             tbxResultado.Text += ++nTiradas + "→" + (resultado+1)+"\r\n";
         }
@@ -86,9 +89,26 @@ namespace Ejercicio_9
             if (tbxNTiradas.Text.Length > 0)
             {
                 int nTiradas = int.Parse(tbxNTiradas.Text);
-                TirarDado(nTiradas);
+                for (int i = 0; i < nTiradas; i++)
+                {
+                    TirarDado();
+                }
             }
         }
 
+        void temporizador_Tick(object sender, EventArgs e)
+        {
+            int alea = rnd.Next(dado.Length);
+            MostrarImagen(alea);
+        }
+
+        void SimularTirada()
+        {
+            for (int i = 0; i < dado.Length; i++)
+            {
+                MostrarImagen(i);
+                Thread.Sleep(1);
+            }
+        }
     }
 }
