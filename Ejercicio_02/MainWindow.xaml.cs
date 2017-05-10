@@ -1,17 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Ejercicio_02
 {
@@ -29,7 +19,7 @@ namespace Ejercicio_02
         {
             try
             {
-                List<string> operandos = SepararComandos();
+                List<string> operandos = SepararOperandos();
                 double resultado = HallarResultado(operandos);
                 txtResultado.Text = resultado.ToString();
                 txtResultado.Opacity = 100;
@@ -69,7 +59,7 @@ namespace Ejercicio_02
             return resultado;
         }
 
-        private List<string> SepararComandos()
+        private List<string> SepararOperandos()
         {
             string contenido = tbxCalculadora.Text;
             bool operadorPrevio = false;
