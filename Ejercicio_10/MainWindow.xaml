@@ -31,7 +31,7 @@
             <Button Content="8" Grid.Column="1" Grid.Row="0" Margin="2" Click="Numero_Click"/>
             <Button Content="9" Grid.Column="2" Grid.Row="0" Margin="2" Click="Numero_Click"/>
             <Button Content="/" Grid.Column="3" Grid.Row="0" Margin="2" Click="Operador_Click"/>
-            <Button Content="C" Grid.Column="4" Grid.Row="0" Margin="2" IsEnabled="False"/>
+            <Button x:Name="btnLimpiar" Content="C" Grid.Column="4" Grid.Row="0" Margin="2" IsEnabled="False" Click="btnLimpiar_Click"/>
             <Button Content="4" Grid.Column="0" Grid.Row="1" Margin="2" Click="Numero_Click"/>
             <Button Content="5" Grid.Column="1" Grid.Row="1" Margin="2" Click="Numero_Click"/>
             <Button Content="6" Grid.Column="2" Grid.Row="1" Margin="2" Click="Numero_Click"/>
@@ -44,7 +44,7 @@
             <Button Name="btnEnter" Content="Enter" Grid.Column="4" Grid.Row="2" Grid.RowSpan="2" Margin="2" Click="btnEnter_Click"/>
             <Button Name="btnCero" Content="0" Grid.Column="0" Grid.Row="3" Margin="2" Click="btnCero_Click"/>
             <Button Name="btnSignoUnitario" Content="+/-" Grid.Column="1" Grid.Row="3" Margin="2" IsEnabled="False" Click="btnSignoUnitario_Click"/>
-            <Button Content="," Grid.Column="2" Grid.Row="3" Margin="2"/>
+            <Button x:Name="btnComaDec" Content="," Grid.Column="2" Grid.Row="3" Margin="2" Click="btnComaDec_Click"/>
             <Button Content="+" Grid.Column="3" Grid.Row="3" Margin="2" Click="Operador_Click"/>
         </Grid>
     </StackPanel>
