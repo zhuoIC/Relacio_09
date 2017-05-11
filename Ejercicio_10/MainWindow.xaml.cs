@@ -22,7 +22,7 @@ namespace Ejercicio_10
     {
         string[] operandos = new string[3];
         int nDatos = 0;
-
+        bool EnterPulsado = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -31,6 +31,13 @@ namespace Ejercicio_10
 
         private void Numero_Click(object sender, RoutedEventArgs e)
         {
+            if (EnterPulsado)
+            {
+                nDatos = 0;
+                operandos[nDatos++] = "0";
+                tbxCalculo.Text = "0";
+                EnterPulsado = false;
+            }
             if (nDatos == 2)
             {
                 nDatos++;
@@ -51,19 +58,28 @@ namespace Ejercicio_10
                 if (btnSignoUnitario.IsEnabled)
                 {
                     btnSignoUnitario.IsEnabled = false;
+                    btnLimpiar.IsEnabled = false;
                 }
             }
             else
+            {
                 btnSignoUnitario.IsEnabled = true;
+                btnLimpiar.IsEnabled = true;
+            }
         }
 
         private void Operador_Click(object sender, RoutedEventArgs e)
         {
+            if (EnterPulsado)
+            {
+                EnterPulsado = false;
+            }
             if (nDatos > 0)
             {
                 if (btnSignoUnitario.IsEnabled)
                 {
                     btnSignoUnitario.IsEnabled = false;
+                    btnLimpiar.IsEnabled = false;
                 }
                 switch (nDatos)
                 {
@@ -86,6 +102,10 @@ namespace Ejercicio_10
         {
             if (nDatos == 3)
             {
+                if (operandos[nDatos-1][operandos[nDatos-1].Length-1] == ',')
+                {
+                    operandos[nDatos - 1] = operandos[nDatos - 1].Substring(0, operandos[nDatos - 1].Length - 2);
+                }
                 switch (operandos[1])
                 {
                     case "*":
@@ -108,6 +128,7 @@ namespace Ejercicio_10
                     if (btnSignoUnitario.IsEnabled)
                     {
                         btnSignoUnitario.IsEnabled = false;
+                        btnLimpiar.IsEnabled = false;
                     }
                 }
             }
@@ -137,27 +158,41 @@ namespace Ejercicio_10
         private void btnEnter_Click(object sender, RoutedEventArgs e)
         {
             Calcular();
+            EnterPulsado = true;
         }
 
         private void btnSignoUnitario_Click(object sender, RoutedEventArgs e)
         {
-            operandos[nDatos - 1] = (double.Parse(tbxCalculo.Text) * -1).ToString();
-            tbxCalculo.Text = operandos[nDatos - 1];
+            if (NoGuion(tbxCalculo.Text))
+            {
+                operandos[nDatos - 1] = "-" + tbxCalculo.Text;
+                tbxCalculo.Text = operandos[nDatos - 1]; 
+            }
+            else
+            {
+                operandos[nDatos - 1] = tbxCalculo.Text;
+                operandos[nDatos - 1] = operandos[nDatos - 1].Substring(1, operandos[nDatos - 1].Length - 1);
+                tbxCalculo.Text = operandos[nDatos - 1];
+            }
         }
 
         private void btnLimpiar_Click(object sender, RoutedEventArgs e)
         {
-
+            if (nDatos == 1 || nDatos == 3)
+            {
+                operandos[nDatos-1] = "0";
+                tbxCalculo.Text = operandos[nDatos-1];
+            }
         }
 
         private void btnComaDec_Click(object sender, RoutedEventArgs e)
         {
 
             if (NoComa(tbxCalculo.Text))
-                {
-                    operandos[nDatos - 1] = (double.Parse(tbxCalculo.Text) * 0.1).ToString();
-                    tbxCalculo.Text = operandos[nDatos - 1];
-                }
+            {
+                operandos[nDatos - 1] += ',';
+                tbxCalculo.Text = operandos[nDatos - 1];
+            }
 
         }
         private bool NoComa(string texto)
@@ -166,6 +201,20 @@ namespace Ejercicio_10
             while (indice < texto.Length)
             {
                 if (texto[indice] == ',')
+                {
+                    return false;
+                }
+                indice++;
+            }
+            return true;
+        }
+
+        private bool NoGuion(string texto)
+        {
+            int indice = 0;
+            while (indice < texto.Length)
+            {
+                if (texto[indice] == '-')
                 {
                     return false;
                 }
