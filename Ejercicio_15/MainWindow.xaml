@@ -11,12 +11,12 @@
             <Button Name="btnInicio" Click="btnInicio_Click">
                 <Image Source="Imagenes/1491482155_Modify.png" />
             </Button>
-            <Button Name="btnPausa">
+            <Button Name="btnPausa" Click="btnPausa_Click">
                 <Image Source="Imagenes/1491482254_Erase.png" />
             </Button>
         </ToolBar>
         <Canvas x:Name="cnvJuego" Grid.Row="1">
-            <Ellipse x:Name="elpBola" Fill="#FFF4F4F5" Height="25" Canvas.Left="172" Stroke="Black" Canvas.Top="138" Width="25"/>
+            <Ellipse x:Name="elpBola" Fill="#FFF4F4F5" Height="24" Canvas.Left="172" Stroke="Black" Canvas.Top="138" Width="24"/>
             <Rectangle x:Name="rctBarra" Fill="#FFF4F4F5" Height="25" Canvas.Left="157" Stroke="Black" Canvas.Top="259" Width="85"/>
 
         </Canvas>

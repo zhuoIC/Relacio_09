@@ -22,21 +22,28 @@ namespace Ejercicio_15
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer temporizador = null;
+        DispatcherTimer temporizador = new DispatcherTimer();
         bool ejeX = true;
         bool ejeY = true;
+        Bola nuevaPelota;
+        Barra nuevaBarra;
+
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         private void btnInicio_Click(object sender, RoutedEventArgs e)
         {
-            Ellipse bola = new Ellipse();
-            temporizador = new DispatcherTimer();
-            temporizador.Interval = new TimeSpan((long)Math.Pow(10,9));
-            temporizador.Tick += temporizador_Tick;
-            temporizador.Start();
+            if (!(temporizador.IsEnabled))
+            {
+                nuevaPelota = new Bola((int)elpBola.ActualWidth, (int)elpBola.ActualHeight);
+                nuevaBarra = new Barra((int)rctBarra.ActualWidth, 259);
+                temporizador.Interval = new TimeSpan((long)Math.Pow(10, 5));
+                temporizador.Start();
+                temporizador.Tick += temporizador_Tick; 
+            }
         }
 
         void temporizador_Tick(object sender, EventArgs e)
@@ -47,38 +54,60 @@ namespace Ejercicio_15
 
         void MoverBola()
         {
-            if (ejeY)
-            {
-                elpBola.SetValue(Canvas.LeftProperty, elpBola.Height++);
-            }
-            else
-            {
-                elpBola.SetValue(Canvas.LeftProperty, elpBola.Height--);
-            }
-
             if (ejeX)
             {
-                elpBola.SetValue(Canvas.LeftProperty, elpBola.Width++);
+                Canvas.SetTop(elpBola, ++nuevaPelota.Top.X);
+                Canvas.SetLeft(elpBola, ++nuevaPelota.Left.X);
+                Canvas.SetRight(elpBola, ++nuevaPelota.Right.X);
+                Canvas.SetBottom(elpBola, ++nuevaPelota.Bottom.X);
             }
             else
             {
-                elpBola.SetValue(Canvas.LeftProperty, elpBola.Width--);
+                Canvas.SetTop(elpBola, --nuevaPelota.Top.X);
+                Canvas.SetLeft(elpBola, --nuevaPelota.Left.X);
+                Canvas.SetRight(elpBola, --nuevaPelota.Right.X);
+                Canvas.SetBottom(elpBola, --nuevaPelota.Bottom.X);
             }
+
             if (ejeY)
             {
-                if (cnvJuego.MaxHeight == elpBola.ActualHeight)
+                Canvas.SetTop(elpBola, ++nuevaPelota.Top.Y);
+                Canvas.SetLeft(elpBola, ++nuevaPelota.Left.Y);
+                Canvas.SetRight(elpBola, ++nuevaPelota.Right.Y);
+                Canvas.SetBottom(elpBola, ++nuevaPelota.Bottom.Y);
+            }
+            else
+            {
+                Canvas.SetTop(elpBola, --nuevaPelota.Top.Y);
+                Canvas.SetLeft(elpBola, --nuevaPelota.Left.Y);
+                Canvas.SetRight(elpBola, --nuevaPelota.Right.Y);
+                Canvas.SetBottom(elpBola, --nuevaPelota.Bottom.Y);
+            }
+
+            if (ejeY)
+            {
+                if (Math.Round(cnvJuego.ActualHeight) == nuevaPelota.Bottom.Y)
                 {
                     temporizador.Stop();
                     MessageBox.Show("Perdiste");
                 }
-                else if (Canvas.GetBottom(elpBola) == Canvas.GetTop(rctBarra))
+                else
                 {
-                    ejeY = !ejeY;
+                    int contador = nuevaBarra.ExtremoIzq.X;
+                    while (contador < nuevaBarra.ExtremoDer.X)
+                    {
+                        if (nuevaPelota.Bottom.Y >= nuevaBarra.ExtremoIzq.Y && ((nuevaPelota.Bottom.X >=nuevaBarra.ExtremoIzq.X) &&  (nuevaPelota.Bottom.X <= nuevaBarra.ExtremoIzq.X)))
+                        {
+                            ejeY = !ejeY;
+                            break;
+                        }
+                        contador++;
+                    }
                 }
             }
             else
             {
-                if (cnvJuego.MinHeight == elpBola.ActualHeight)
+                if (0 == elpBola.ActualHeight)
                 {
                     ejeY = !ejeY;
                 }
@@ -97,6 +126,14 @@ namespace Ejercicio_15
                 {
                     ejeX = !ejeX;
                 }
+            }
+        }
+
+        private void btnPausa_Click(object sender, RoutedEventArgs e)
+        {
+            if (temporizador.IsEnabled)
+            {
+                temporizador.Stop();
             }
         }
     }
