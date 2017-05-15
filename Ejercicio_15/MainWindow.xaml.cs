@@ -268,11 +268,12 @@ namespace NHJ.Ejercicio_15
             if (temporizador != null)
             {
                 temporizador.Stop();
-                if (MessageBoxResult.No == MessageBox.Show("¿Seguro que quiere salir?", "Pausa", MessageBoxButton.YesNo, MessageBoxImage.Question))
-                {
-                    e.Cancel = true;
+            }
+            if (MessageBoxResult.No == MessageBox.Show("¿Seguro que quiere salir?", "Pausa", MessageBoxButton.YesNo, MessageBoxImage.Question))
+            {
+                e.Cancel = true;
+                if (temporizador != null)
                     temporizador.Start();
-                }
             }
         }
     }
