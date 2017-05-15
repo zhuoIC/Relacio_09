@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 //-------------------------------
 using System.Windows.Threading;
 
@@ -36,15 +26,33 @@ namespace NHJ.Ejercicio_15
         {
             if (temporizador == null || !(temporizador.IsEnabled))
             {
-                puntuacion = 0;
-                lbl.Content = (object)puntuacion.ToString("000");
-                Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola));
-                Canvas.SetTop(elpBola, elpBola.Height);
-                temporizador = new DispatcherTimer();
-                temporizador.Interval = new TimeSpan((long)Math.Pow(10, 4));
-                temporizador.Start();
-                temporizador.Tick += temporizador_Tick; 
+                    IniciarJuego();
             }
+            else if (temporizador.IsEnabled)
+	        {
+                temporizador.Stop();
+		        if (MessageBoxResult.Yes == MessageBox.Show("¿Seguro que quiere empezar una nueva partida?", "Ya hay una partida empezada", MessageBoxButton.YesNo, MessageBoxImage.Question))
+                {
+                    temporizador = null;
+                    IniciarJuego();
+                }
+                else
+                {
+                    temporizador.Start();
+                }
+	        }
+        }
+
+        private void IniciarJuego()
+        {
+            puntuacion = 0;
+            lbl.Content = (object)puntuacion.ToString("000");
+            Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola));
+            Canvas.SetTop(elpBola, elpBola.Height);
+            temporizador = new DispatcherTimer();
+            temporizador.Interval = new TimeSpan((long)Math.Pow(10, 4));
+            temporizador.Start();
+            temporizador.Tick += temporizador_Tick;
         }
 
         void temporizador_Tick(object sender, EventArgs e)
@@ -217,14 +225,17 @@ namespace NHJ.Ejercicio_15
 
         private void Finalizar_Click(object sender, RoutedEventArgs e)
         {
-            temporizador.Stop();
-            if (MessageBoxResult.No == MessageBox.Show("¿Terminar partida?", "Pausa", MessageBoxButton.YesNo, MessageBoxImage.Question))
+            if (temporizador != null)
             {
-                temporizador.Start();
-            }
-            else
-            {
-                temporizador = null;
+                temporizador.Stop();
+                if (MessageBoxResult.No == MessageBox.Show("¿Terminar partida?", "Pausa", MessageBoxButton.YesNo, MessageBoxImage.Question))
+                {
+                    temporizador.Start();
+                }
+                else
+                {
+                    temporizador = null;
+                } 
             }
         }
 
@@ -249,6 +260,19 @@ namespace NHJ.Ejercicio_15
             if (temporizador == null)
             {
                 rctBarra.Width = 85;
+            }
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (temporizador != null)
+            {
+                temporizador.Stop();
+                if (MessageBoxResult.No == MessageBox.Show("¿Seguro que quiere salir?", "Pausa", MessageBoxButton.YesNo, MessageBoxImage.Question))
+                {
+                    e.Cancel = true;
+                    temporizador.Start();
+                }
             }
         }
     }

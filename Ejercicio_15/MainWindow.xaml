@@ -1,7 +1,7 @@
 ﻿<Window x:Class="NHJ.Ejercicio_15.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Ejercicio 15" Height="350" Width="525" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
+        Title="Ejercicio 15" Height="350" Width="525" KeyDown="Window_KeyDown" ResizeMode="CanMinimize" Closing="Window_Closing">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="23*"/>
@@ -10,14 +10,34 @@
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
             <MenuItem Header="Juego">
-                <MenuItem Header="Nuevo Juego" Click="btnInicio_Click"/>
-                <MenuItem Header="Pausar Juego" Click="btnPausa_Click"/>
-                <MenuItem Header="Terminar juego" Click="Finalizar_Click" />
+                <MenuItem Header="Nuevo Juego" Click="btnInicio_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/1491482155_Modify.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Pausar Juego" Click="btnPausa_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/1491482254_Erase.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Terminar juego" Click="Finalizar_Click" Icon="Esc" />
             </MenuItem>
             <MenuItem Header="Dificultad">
-                <MenuItem Header="Principiante" Click="Principiante_Click"/>
-                <MenuItem Header="Normal" Click="Normal_Click" />
-                <MenuItem Header="Experto" Click="Experto_Click"/>
+                <MenuItem Header="Principiante" Click="Principiante_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/001-smile.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Normal" Click="Normal_Click" >
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/003-meh-face-emoticon.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Experto" Click="Experto_Click">
+                    <MenuItem.Icon>
+                        <Image Source="Imagenes/002-frown.png"></Image>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Configuracion"></MenuItem>
         </Menu>
