@@ -64,7 +64,7 @@ namespace Ejercicio_9
 
         private void MostrarImagen(int indice)
         {
-            BitmapImage img = new BitmapImage(new Uri(System.IO.Path.GetFullPath(imagenes[indice])));
+            BitmapImage img = new BitmapImage(new Uri(imagenes[indice]));
             imgDado.Source = img;
         }
 

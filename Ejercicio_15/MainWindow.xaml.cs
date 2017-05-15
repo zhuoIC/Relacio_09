@@ -22,11 +22,9 @@ namespace Ejercicio_15
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer temporizador = new DispatcherTimer();
+        DispatcherTimer temporizador = null;
         bool ejeX = true;
         bool ejeY = true;
-        Bola nuevaPelota;
-        Barra nuevaBarra;
 
         public MainWindow()
         {
@@ -36,11 +34,12 @@ namespace Ejercicio_15
 
         private void btnInicio_Click(object sender, RoutedEventArgs e)
         {
-            if (!(temporizador.IsEnabled))
+            if (temporizador == null || !(temporizador.IsEnabled))
             {
-                nuevaPelota = new Bola((int)elpBola.ActualWidth, (int)elpBola.ActualHeight);
-                nuevaBarra = new Barra((int)rctBarra.ActualWidth, 259);
-                temporizador.Interval = new TimeSpan((long)Math.Pow(10, 5));
+                Canvas.SetLeft(elpBola, 265);
+                Canvas.SetTop(elpBola, 60);
+                temporizador = new DispatcherTimer();
+                temporizador.Interval = new TimeSpan((long)Math.Pow(10, 4));
                 temporizador.Start();
                 temporizador.Tick += temporizador_Tick; 
             }
@@ -49,6 +48,7 @@ namespace Ejercicio_15
         void temporizador_Tick(object sender, EventArgs e)
         {
             MoverBola();
+            
         }
 
 
@@ -56,58 +56,46 @@ namespace Ejercicio_15
         {
             if (ejeX)
             {
-                Canvas.SetTop(elpBola, ++nuevaPelota.Top.X);
-                Canvas.SetLeft(elpBola, ++nuevaPelota.Left.X);
-                Canvas.SetRight(elpBola, ++nuevaPelota.Right.X);
-                Canvas.SetBottom(elpBola, ++nuevaPelota.Bottom.X);
+                Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola)+1);
             }
             else
             {
-                Canvas.SetTop(elpBola, --nuevaPelota.Top.X);
-                Canvas.SetLeft(elpBola, --nuevaPelota.Left.X);
-                Canvas.SetRight(elpBola, --nuevaPelota.Right.X);
-                Canvas.SetBottom(elpBola, --nuevaPelota.Bottom.X);
+                Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola)-1);
             }
 
             if (ejeY)
             {
-                Canvas.SetTop(elpBola, ++nuevaPelota.Top.Y);
-                Canvas.SetLeft(elpBola, ++nuevaPelota.Left.Y);
-                Canvas.SetRight(elpBola, ++nuevaPelota.Right.Y);
-                Canvas.SetBottom(elpBola, ++nuevaPelota.Bottom.Y);
+                Canvas.SetTop(elpBola, Canvas.GetTop(elpBola)+1);
             }
             else
             {
-                Canvas.SetTop(elpBola, --nuevaPelota.Top.Y);
-                Canvas.SetLeft(elpBola, --nuevaPelota.Left.Y);
-                Canvas.SetRight(elpBola, --nuevaPelota.Right.Y);
-                Canvas.SetBottom(elpBola, --nuevaPelota.Bottom.Y);
+                Canvas.SetTop(elpBola, Canvas.GetTop(elpBola) -1);
             }
+            //-------------------------------------------------------------------
 
             if (ejeY)
             {
-                if (Math.Round(cnvJuego.ActualHeight) == nuevaPelota.Bottom.Y)
+                if (cnvJuego.ActualHeight == Canvas.GetTop(elpBola)+elpBola.Height)
                 {
                     temporizador.Stop();
                     MessageBox.Show("Perdiste");
                 }
                 else
                 {
-                    int contador = nuevaBarra.ExtremoIzq.X;
-                    while (contador < nuevaBarra.ExtremoDer.X)
+                    Punto ExtremoIzq = new Punto(Canvas.GetLeft(rctBarra), Canvas.GetTop(rctBarra));
+                    Punto ExtremoDer = new Punto(Canvas.GetLeft(rctBarra) + rctBarra.Width, Canvas.GetTop(rctBarra));
+                    Punto baseBola = new Punto(Canvas.GetLeft(elpBola)+ elpBola.Width, Canvas.GetTop(elpBola)+ elpBola.Height);
+
+                    if (ExtremoIzq.Y == baseBola.Y && (baseBola.X >= ExtremoIzq.X && baseBola.X <= ExtremoDer.X))
                     {
-                        if (nuevaPelota.Bottom.Y >= nuevaBarra.ExtremoIzq.Y && ((nuevaPelota.Bottom.X >=nuevaBarra.ExtremoIzq.X) &&  (nuevaPelota.Bottom.X <= nuevaBarra.ExtremoIzq.X)))
-                        {
-                            ejeY = !ejeY;
-                            break;
-                        }
-                        contador++;
+                        ejeY = !ejeY;
                     }
+                    
                 }
             }
             else
             {
-                if (0 == elpBola.ActualHeight)
+                if (0 == Canvas.GetTop(elpBola))
                 {
                     ejeY = !ejeY;
                 }
@@ -115,26 +103,59 @@ namespace Ejercicio_15
 
             if (ejeX)
             {
-                if (cnvJuego.MaxWidth ==  elpBola.ActualWidth)
+                if (cnvJuego.ActualWidth == Canvas.GetLeft(elpBola) + elpBola.Width)
                 {
                     ejeX = !ejeX;
                 }
             }
             else
             {
-                if (cnvJuego.MinWidth == elpBola.ActualWidth)
+                if (0 == Canvas.GetLeft(elpBola))
                 {
                     ejeX = !ejeX;
                 }
             }
         }
+        
 
         private void btnPausa_Click(object sender, RoutedEventArgs e)
         {
-            if (temporizador.IsEnabled)
+            if (temporizador != null && temporizador.IsEnabled)
             {
                 temporizador.Stop();
             }
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (temporizador != null && temporizador.IsEnabled)
+            {
+                MoverBarra(e.Key);
+            }
+        }
+
+        private void MoverBarra(Key tecla)
+        {
+            Punto ExtremoIzq = new Punto(Canvas.GetLeft(rctBarra), Canvas.GetTop(rctBarra));
+            Punto ExtremoDer = new Punto(Canvas.GetLeft(rctBarra) + rctBarra.Width, Canvas.GetTop(rctBarra));
+
+            if (Key.Left == tecla)
+            {
+                if (ExtremoIzq.X >= 0)
+                {
+                    Canvas.SetLeft(rctBarra, Canvas.GetLeft(rctBarra) -10);
+                }
+            }
+            else if (Key.Right == tecla)
+            {
+                if (ExtremoDer.X <= cnvJuego.ActualWidth)
+                {
+                    Canvas.SetLeft(rctBarra, Canvas.GetLeft(rctBarra) + 10);
+                }
+            }
+        }
+
+
+        
     }
 }

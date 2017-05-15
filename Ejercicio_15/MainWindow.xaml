@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Ejercicio_15.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="350" Width="525" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
@@ -16,8 +16,9 @@
             </Button>
         </ToolBar>
         <Canvas x:Name="cnvJuego" Grid.Row="1">
-            <Ellipse x:Name="elpBola" Fill="#FFF4F4F5" Height="24" Canvas.Left="172" Stroke="Black" Canvas.Top="138" Width="24"/>
-            <Rectangle x:Name="rctBarra" Fill="#FFF4F4F5" Height="25" Canvas.Left="157" Stroke="Black" Canvas.Top="259" Width="85"/>
+            <Ellipse x:Name="elpBola" Fill="#FFF4F4F5" Height="24" Canvas.Left="365" Stroke="Black" Canvas.Top="102" Width="24"/>
+            <Rectangle x:Name="rctBarra" Fill="#FFF4F4F5" Height="25" Canvas.Left="158" Stroke="Black" Canvas.Top="252" Width="85"/>
+            <Label x:Name="lbl" Content="Label" Canvas.Left="459" Canvas.Top="41"/>
 
         </Canvas>
     </Grid>

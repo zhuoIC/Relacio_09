@@ -8,26 +8,84 @@ namespace Ejercicio_15
 {
     class Punto
     {
-        int x;
-        int y;
+        private double x;
+        private double y;
 
-        public int X
+        public double X
         {
             get { return x; }
             set { x = value; }
         }
 
-        public int Y
+        public double Y
         {
             get { return y; }
             set { y = value; }
         }
 
-        public Punto(int ejeX, int ejeY)
+        public Punto(double ejeX, double ejeY)
         {
             x = ejeX;
             y = ejeY;
         }
+        public static bool operator > (Punto A, Punto B) 
+        {
+            if (A.Y == B.Y && A.X == B.X)
+            {
+                return true;
+            }
+            if (A.Y >= B.Y)
+            {
+                if (A.Y == B.Y && A.X < B.X)
+                {
+                    return false;
+                }
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator < (Punto A, Punto B)
+        {
+            if (A.Y == B.Y && A.X == B.X)
+            {
+                return false;
+            }
+            if (A.Y >= B.Y)
+            {
+                if (A.Y == B.Y && A.X < B.X)
+                {
+                    return true;
+                }
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static bool operator == (Punto A, Punto B)
+        {
+            if (A.Y != B.Y || A.X != B.X)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public static bool operator != (Punto A, Punto B)
+        {
+            if (A.Y != B.Y || A.X != B.X)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 
     class Bola
@@ -90,8 +148,8 @@ namespace Ejercicio_15
 
         public Barra(int ancho, int posicionCanvas)
         {
-            extremoIzq = new Punto(0, posicionCanvas);
-            extremoDer = new Punto(ancho, posicionCanvas);
+            extremoIzq = new Punto(posicionCanvas/2, posicionCanvas);
+            extremoDer = new Punto(posicionCanvas/2 + ancho, posicionCanvas);
         }
     }
 }
