@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Ejercicio_15
+namespace NHJ.Ejercicio_15
 {
     /// <summary>
     /// Lógica de interacción para App.xaml

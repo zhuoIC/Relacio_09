@@ -1,4 +1,4 @@
-﻿<Application x:Class="Ejercicio_15.App"
+﻿<Application x:Class="NHJ.Ejercicio_15.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">

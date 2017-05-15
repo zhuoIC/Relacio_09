@@ -1,25 +1,47 @@
-﻿<Window x:Class="Ejercicio_15.MainWindow"
+﻿<Window x:Class="NHJ.Ejercicio_15.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
+        Title="Ejercicio 15" Height="350" Width="525" KeyDown="Window_KeyDown" ResizeMode="CanMinimize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="57*"/>
+            <RowDefinition Height="23*"/>
+            <RowDefinition Height="27*"/>
+            <RowDefinition Height="272*"/>
         </Grid.RowDefinitions>
-        <ToolBar Grid.Row="0">
+        <Menu Grid.Row="0">
+            <MenuItem Header="Juego">
+                <MenuItem Header="Nuevo Juego" Click="btnInicio_Click"/>
+                <MenuItem Header="Pausar Juego" Click="btnPausa_Click"/>
+                <MenuItem Header="Terminar juego" Click="Finalizar_Click" />
+            </MenuItem>
+            <MenuItem Header="Dificultad">
+                <MenuItem Header="Principiante" Click="Principiante_Click"/>
+                <MenuItem Header="Normal" Click="Normal_Click" />
+                <MenuItem Header="Experto" Click="Experto_Click"/>
+            </MenuItem>
+            <MenuItem Header="Configuracion"></MenuItem>
+        </Menu>
+        <ToolBar Grid.Row="1">
             <Button Name="btnInicio" Click="btnInicio_Click">
                 <Image Source="Imagenes/1491482155_Modify.png" />
             </Button>
             <Button Name="btnPausa" Click="btnPausa_Click">
                 <Image Source="Imagenes/1491482254_Erase.png" />
             </Button>
+            <Button Name="btnPrincipiante" Click="Principiante_Click">
+                <Image Source="Imagenes/001-smile.png" />
+            </Button>
+            <Button Name="btnNormal" Click="Normal_Click">
+                <Image Source="Imagenes/003-meh-face-emoticon.png" />
+            </Button>
+            <Button Name="btnExperto" Click="Experto_Click">
+                <Image Source="Imagenes/002-frown.png" />
+            </Button>
         </ToolBar>
-        <Canvas x:Name="cnvJuego" Grid.Row="1">
-            <Ellipse x:Name="elpBola" Fill="#FFF4F4F5" Height="24" Canvas.Left="365" Stroke="Black" Canvas.Top="102" Width="24"/>
-            <Rectangle x:Name="rctBarra" Fill="#FFF4F4F5" Height="25" Canvas.Left="158" Stroke="Black" Canvas.Top="252" Width="85"/>
-            <Label x:Name="lbl" Content="Label" Canvas.Left="459" Canvas.Top="41"/>
-
+        <Canvas x:Name="cnvJuego" Grid.Row="2" Margin="1,0">
+            <Ellipse x:Name="elpBola" Fill="#FFF4F4F5" Height="24" Canvas.Left="249" Stroke="Black" Canvas.Top="69" Width="24"/>
+            <Rectangle x:Name="rctBarra" Fill="#FFF4F4F5" Height="25" Canvas.Left="221" Stroke="Black" Canvas.Top="237" Width="85"/>
+            <Label x:Name="lbl" Content="000" Canvas.Left="464" Canvas.Top="10" FontFamily="Arial" FontWeight="Bold" FontSize="20"/>
         </Canvas>
     </Grid>
 </Window>

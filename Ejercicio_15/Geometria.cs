@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Ejercicio_15
+﻿
+namespace NHJ.Ejercicio_15
 {
     class Punto
     {
@@ -27,63 +22,6 @@ namespace Ejercicio_15
         {
             x = ejeX;
             y = ejeY;
-        }
-        public static bool operator > (Punto A, Punto B) 
-        {
-            if (A.Y == B.Y && A.X == B.X)
-            {
-                return true;
-            }
-            if (A.Y >= B.Y)
-            {
-                if (A.Y == B.Y && A.X < B.X)
-                {
-                    return false;
-                }
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public static bool operator < (Punto A, Punto B)
-        {
-            if (A.Y == B.Y && A.X == B.X)
-            {
-                return false;
-            }
-            if (A.Y >= B.Y)
-            {
-                if (A.Y == B.Y && A.X < B.X)
-                {
-                    return true;
-                }
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
-
-        public static bool operator == (Punto A, Punto B)
-        {
-            if (A.Y != B.Y || A.X != B.X)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        public static bool operator != (Punto A, Punto B)
-        {
-            if (A.Y != B.Y || A.X != B.X)
-            {
-                return true;
-            }
-            return false;
         }
 
     }

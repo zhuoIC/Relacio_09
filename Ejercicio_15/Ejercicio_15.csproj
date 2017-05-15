@@ -7,7 +7,7 @@
     <ProjectGuid>{B5581AA0-3EE7-4DA0-82C7-115CAD10BF73}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ejercicio_15</RootNamespace>
+    <RootNamespace>NHJ.Ejercicio_15</RootNamespace>
     <AssemblyName>Ejercicio_15</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -97,6 +97,11 @@
   <ItemGroup>
     <Resource Include="Imagenes\1491482155_Modify.png" />
     <Resource Include="Imagenes\1491482254_Erase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagenes\001-smile.png" />
+    <Resource Include="Imagenes\002-frown.png" />
+    <Resource Include="Imagenes\003-meh-face-emoticon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
