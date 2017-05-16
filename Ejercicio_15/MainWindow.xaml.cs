@@ -14,9 +14,10 @@ namespace NHJ.Ejercicio_15
     {
         DispatcherTimer temporizador = null;
         bool ejeX = true;
-        bool ejeY = true;
+        bool ejeY = false;
         decimal puntuacion = 0;
-
+        int velocidadBola = 1;
+        int velocidadBarra = 10;
         public MainWindow()
         {
             InitializeComponent();
@@ -50,7 +51,7 @@ namespace NHJ.Ejercicio_15
             Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola));
             Canvas.SetTop(elpBola, elpBola.Height);
             temporizador = new DispatcherTimer();
-            temporizador.Interval = new TimeSpan((long)Math.Pow(10, 4));
+            temporizador.Interval = new TimeSpan(10000);
             temporizador.Start();
             temporizador.Tick += temporizador_Tick;
         }
@@ -65,20 +66,20 @@ namespace NHJ.Ejercicio_15
         {
             if (ejeX)
             {
-                Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola)+1);
+                Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola)+velocidadBola);
             }
             else
             {
-                Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola)-1);
+                Canvas.SetLeft(elpBola, Canvas.GetLeft(elpBola) - velocidadBola);
             }
 
             if (ejeY)
             {
-                Canvas.SetTop(elpBola, Canvas.GetTop(elpBola)+1);
+                Canvas.SetTop(elpBola, Canvas.GetTop(elpBola) + velocidadBola);
             }
             else
             {
-                Canvas.SetTop(elpBola, Canvas.GetTop(elpBola) -1);
+                Canvas.SetTop(elpBola, Canvas.GetTop(elpBola) - velocidadBola);
             }
         }
 
@@ -120,7 +121,7 @@ namespace NHJ.Ejercicio_15
                         {
                             ejeX = !ejeX;
                         }
-                        else if (ExtremoIzq.Y > lateralIzqBola.Y && lateralIzqBola.X <= ExtremoDer.X && lateralIzqBola.X + elpBola.ActualWidth >= ExtremoIzq.X)// choque esquinas
+                        if (ExtremoIzq.Y > lateralIzqBola.Y && lateralIzqBola.X <= ExtremoDer.X && lateralIzqBola.X + elpBola.ActualWidth >= ExtremoIzq.X)// choque esquinas
                         {
                             if (lateralIzqBola.X  >= ExtremoIzq.X) // Esquina derecha
                             {
@@ -141,7 +142,7 @@ namespace NHJ.Ejercicio_15
             else
             {
                 // Choque techo
-                if (0 == Canvas.GetTop(elpBola))
+                if (0 >= Canvas.GetTop(elpBola))
                 {
                     ejeY = !ejeY;
                 }
@@ -150,7 +151,7 @@ namespace NHJ.Ejercicio_15
             if (ejeX)
             {
                 // Choque pared derecha
-                if (cnvJuego.ActualWidth == Canvas.GetLeft(elpBola) + elpBola.ActualWidth)
+                if (cnvJuego.ActualWidth <= Canvas.GetLeft(elpBola) + elpBola.ActualWidth)
                 {
                     ejeX = !ejeX;
                 }
@@ -158,7 +159,7 @@ namespace NHJ.Ejercicio_15
             else
             {
                 // Choque pared izquierda
-                if (0 == Canvas.GetLeft(elpBola))
+                if (0 >= Canvas.GetLeft(elpBola))
                 {
                     ejeX = !ejeX;
                 }
@@ -210,14 +211,14 @@ namespace NHJ.Ejercicio_15
                 {
                     if (ExtremoIzq.X >= 0)
                     {
-                        Canvas.SetLeft(rctBarra, Canvas.GetLeft(rctBarra) - 10);
+                        Canvas.SetLeft(rctBarra, Canvas.GetLeft(rctBarra) - velocidadBarra);
                     }
                 }
                 else if (Key.Right == tecla)
                 {
                     if (ExtremoDer.X <= cnvJuego.ActualWidth)
                     {
-                        Canvas.SetLeft(rctBarra, Canvas.GetLeft(rctBarra) + 10);
+                        Canvas.SetLeft(rctBarra, Canvas.GetLeft(rctBarra) + velocidadBarra);
                     }
                 } 
             }
@@ -243,6 +244,8 @@ namespace NHJ.Ejercicio_15
         {
             if (temporizador == null)
             {
+                velocidadBarra = 15;
+                velocidadBola = 3;
                 rctBarra.Width = 60;
             }
         }
@@ -251,6 +254,8 @@ namespace NHJ.Ejercicio_15
         {
             if (temporizador == null)
             {
+                velocidadBarra = 20;
+                velocidadBola = 5;
                 rctBarra.Width = 24;
             }
         }
@@ -259,6 +264,8 @@ namespace NHJ.Ejercicio_15
         {
             if (temporizador == null)
             {
+                velocidadBarra = 10;
+                velocidadBola = 1;
                 rctBarra.Width = 85;
             }
         }
