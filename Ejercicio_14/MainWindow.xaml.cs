@@ -31,6 +31,40 @@ namespace Ejercicio_14
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog abrirDoc = new OpenFileDialog();
+            abrirDoc.Multiselect = false;
+            
+            abrirDoc.ShowDialog();
+            if (abrirDoc.CheckFileExists)
+            {
+                int nLineas = 0;
+                int nPalabras = 0;
+                FileInfo archivo = new FileInfo(abrirDoc.FileName);
+                long tamanio = archivo.Length/1024;
+                using (StreamReader flujo = new StreamReader(archivo.OpenRead()))
+                {
+                    string linea = string.Empty;
+                    
+                    while ((linea = flujo.ReadLine()) != null)
+                    {
+                        bool EsLetraoDig = false;
+                        for (int i = 0; i < linea.Length; i++)
+                        {
+                            if (char.IsLetterOrDigit(linea[i]))
+                            {
+                                if (!EsLetraoDig)
+                                {
+                                    EsLetraoDig = true;
+                                    nPalabras++;
+                                }  
+                            }
+                            else
+                            {
+                                EsLetraoDig = false;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
