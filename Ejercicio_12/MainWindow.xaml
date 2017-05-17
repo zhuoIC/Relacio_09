@@ -1,0 +1,15 @@
+﻿<Window x:Class="Ejercicio_12.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ejercicio 12" Height="393.284" Width="680.224">
+    <Grid Margin="0,0,2,7">
+        <StackPanel x:Name="stcPanel" HorizontalAlignment="Left" Height="201" Margin="28,15" VerticalAlignment="Top" Width="593" Background="Black"/>
+
+        <Slider x:Name="sldRojo" HorizontalAlignment="Left" Height="24" Margin="108,249,0,0" VerticalAlignment="Top" Width="513" ValueChanged="Slider_ValueChanged" Maximum="255"/>
+        <Slider x:Name="sldVerde" HorizontalAlignment="Left" Height="24" Margin="108,279,0,0" VerticalAlignment="Top" Width="513" ValueChanged="Slider_ValueChanged" Maximum="255"/>
+        <Slider x:Name="sldAzul" HorizontalAlignment="Left" Height="24" Margin="108,309,0,0" VerticalAlignment="Top" Width="513" ValueChanged="Slider_ValueChanged" Maximum="255"/>
+        <Label Content="Rojo" HorizontalAlignment="Left" Margin="41,249,0,0" VerticalAlignment="Top" Height="24" Foreground="Red"/>
+        <Label Content="Verde" HorizontalAlignment="Left" Margin="41,279,0,0" VerticalAlignment="Top" Height="24" Foreground="Lime"/>
+        <Label Content="Azul" HorizontalAlignment="Left" Margin="41,309,0,0" VerticalAlignment="Top" Height="24" Foreground="Blue"/>
+    </Grid>
+</Window>
