@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Ejercicio_12.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Ejercicio 12" Height="393.284" Width="680.224">
+        Title="Ejercicio 12" Height="393.284" Width="680.224" ResizeMode="CanMinimize">
     <Grid Margin="0,0,2,7">
         <StackPanel x:Name="stcPanel" HorizontalAlignment="Left" Height="201" Margin="28,15" VerticalAlignment="Top" Width="593" Background="Black"/>
 

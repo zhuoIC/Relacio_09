@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 //---------------------------------------------
 using System.Windows.Threading;
 using System.Threading;
@@ -26,7 +15,6 @@ namespace Ejercicio_9
         static int[] dado = new int[6];
         static Random rnd = new Random();
         int nTiradas = 0;
-        DispatcherTimer temporizador;
 
         static string[] imagenes = new string[] 
         { 

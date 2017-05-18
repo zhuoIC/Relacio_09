@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Ejercicio_03.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Relación 09. Ejercicio 03" Height="350" Width="450" ToolTip="Halla el número dado" >
+        Title="Relación 09. Ejercicio 03" Height="350" Width="450" ToolTip="Halla el número dado" ResizeMode="CanMinimize" >
     <Grid>
         <StackPanel HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="442">
             <DockPanel Height="100" LastChildFill="False" Margin="0,0,10,0">
