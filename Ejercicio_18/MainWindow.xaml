@@ -1,0 +1,38 @@
+﻿<Window x:Class="Ejercicio_18.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="424.627" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="47*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="35*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Jarra A" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center"/>
+        <Label Content="Jarra B" HorizontalAlignment="Left" Margin="20,0,0,0" VerticalAlignment="Center" Grid.Column="2"/>
+        <TextBox x:Name="tbxJarraA" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="50" Margin="0,0,20,0"/>
+        <TextBox x:Name="tbxJarraB" HorizontalAlignment="Right" Height="23" TextWrapping="Wrap" VerticalAlignment="Center" Width="50" Margin="0,0,20,0" Grid.Column="2"/>
+        <Button x:Name="btnCrear" Content="Crear Jarras" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" Height="50" Click="btnCrear_Click"/>
+        <Button x:Name="btnLlenarJarraA" Content="Llenar" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="76" Height="30" Click="btnLlenarJarraA_Click" />
+        <Button x:Name="btnVaciarJarraA" Content="Vaciar" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="76" Height="30" Click="btnVaciarJarraA_Click"/>
+        <Button x:Name="btnJarraAJarraB" Content="→" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="76" Grid.Column="1" Click="btnJarraAJarraB_Click" />
+        <Button x:Name="btnJarraBJarraA" Content="←" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Width="76" Grid.Column="1" Click="btnJarraBJarraA_Click" />
+        <Button Content="Finalizar" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="76" Grid.Column="1"/>
+        <Button x:Name="btnLlenarJarraB" Content="Llenar" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="75" Grid.Column="2" Height="30" Click="btnLlenarJarraB_Click"/>
+        <Button x:Name="btnVaciarJarraB" Content="Vaciar" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" Width="75" Grid.Column="2" Height="30" Click="btnVaciarJarraB_Click"/>
+        <TextBox Grid.ColumnSpan="3" HorizontalAlignment="Left" Height="54" Margin="124,10,0,0" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="285"/>
+        <TextBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="83,10,0,0" Grid.Row="6" TextWrapping="Wrap" VerticalAlignment="Top" Width="175"/>
+        <Button Content="Demo" HorizontalAlignment="Center" Grid.Row="6" VerticalAlignment="Center" Width="75" Grid.Column="2" />
+        <ProgressBar x:Name="pgbJarraA" HorizontalAlignment="Left" Height="40" Grid.Row="4" VerticalAlignment="Center" Width="200" Grid.ColumnSpan="2" Margin="20,0,0,0"/>
+        <ProgressBar x:Name="pgbJarraB" HorizontalAlignment="Right" Height="40" Grid.Row="4" VerticalAlignment="Center" Width="200" Grid.ColumnSpan="2" Grid.Column="1" Margin="0,0,20,0"/>
+    </Grid>
+</Window>
