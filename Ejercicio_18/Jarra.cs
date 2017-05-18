@@ -51,8 +51,12 @@ namespace Ejercicio_18
 
         public void LLenarDesde(Jarra unaJarra)
         {
-            this.Cantidad = unaJarra.Cantidad;
-            unaJarra.Cantidad -= this.Cantidad;
+            if (this.Cantidad < this.Capacidad) // No esta llena
+            {
+                int tmp = this.Cantidad;
+                this.Cantidad += unaJarra.Cantidad; // suma todo
+                unaJarra.Cantidad -= this.Cantidad - tmp;
+            }
         }
         public override string ToString()
         {

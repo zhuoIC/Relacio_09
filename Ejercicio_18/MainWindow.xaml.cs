@@ -1,17 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Ejercicio_18
 {
@@ -30,75 +18,156 @@ namespace Ejercicio_18
 
         private void btnCrear_Click(object sender, RoutedEventArgs e)
         {
+            CrearJarras();
+        }
+
+        private void CrearJarras()
+        {
             string capacidadA = tbxJarraA.Text;
             string capacidadB = tbxJarraB.Text;
 
-            if (!string.IsNullOrEmpty(capacidadA) && !(string.IsNullOrEmpty(capacidadB)))
+            try
             {
-                jarraA = new Jarra(int.Parse(capacidadA));
-                jarraB = new Jarra(int.Parse(capacidadB));
-                pgbJarraA.Maximum = jarraA.Capacidad;
-                pgbJarraA.Value = jarraA.Cantidad;
-                pgbJarraB.Maximum = jarraB.Capacidad;
-                pgbJarraB.Value = jarraB.Cantidad;
-                btnCrear.IsEnabled = false;
+                if (!string.IsNullOrEmpty(capacidadA) && !(string.IsNullOrEmpty(capacidadB)))
+                {
+                    jarraA = new Jarra(int.Parse(capacidadA));
+                    jarraB = new Jarra(int.Parse(capacidadB));
+                    pgbJarraA.Maximum = jarraA.Capacidad;
+                    pgbJarraA.Value = jarraA.Cantidad;
+                    pgbJarraB.Maximum = jarraB.Capacidad;
+                    pgbJarraB.Value = jarraB.Cantidad;
+                    tbxPasos.Text = "Se llenan las jarras\r\n";
+                    btnCrear.IsEnabled = false;
+                }
             }
-
+            catch (Exception)
+            {
+                ;
+            }
         }
 
         private void btnLlenarJarraA_Click(object sender, RoutedEventArgs e)
         {
             if (jarraA != null)
             {
-                jarraA.Llenar();
-                pgbJarraA.Value = jarraA.Cantidad;
+                LlenarJarraA();
             }
+        }
+
+        private void LlenarJarraA()
+        {
+            jarraA.Llenar();
+            pgbJarraA.Value = jarraA.Cantidad;
+            tbxPasos.Text += "Lleno la jarra A \r\n";
         }
 
         private void btnVaciarJarraA_Click(object sender, RoutedEventArgs e)
         {
-            if (jarraA != null)
+            if (jarraA != null && jarraA.Cantidad > 0)
             {
-                jarraA.Vaciar();
-                pgbJarraA.Value = jarraA.Cantidad;
+                VaciarJarraA();
             }
+        }
+
+        private void VaciarJarraA()
+        {
+            jarraA.Vaciar();
+            pgbJarraA.Value = jarraA.Cantidad;
+            tbxPasos.Text += "Vacío la jarra A \r\n";
         }
 
         private void btnLlenarJarraB_Click(object sender, RoutedEventArgs e)
         {
-            if (jarraB != null)
+            if (Iniciadas())
             {
-                jarraB.Llenar();
-                pgbJarraB.Value = jarraB.Cantidad;
+                LlenarJarraB();
             }
+        }
+
+        private void LlenarJarraB()
+        {
+            jarraB.Llenar();
+            pgbJarraB.Value = jarraB.Cantidad;
+            tbxPasos.Text += "Lleno la jarra B \r\n";
         }
 
         private void btnVaciarJarraB_Click(object sender, RoutedEventArgs e)
         {
-            if (jarraB != null)
+            if (Iniciadas() && jarraB.Cantidad > 0)
             {
-                jarraB.Vaciar();
-                pgbJarraB.Value = jarraB.Cantidad;
+                VaciarJarraB();
             }
+        }
+
+        private void VaciarJarraB()
+        {
+            jarraB.Vaciar();
+            pgbJarraB.Value = jarraB.Cantidad;
+            tbxPasos.Text += "Vacío la jarra B \r\n";
         }
 
         private void btnJarraBJarraA_Click(object sender, RoutedEventArgs e)
         {
-            if (jarraA != null && jarraB != null)
+            if (Iniciadas() && jarraA.Capacidad > jarraA.Cantidad && jarraB.Cantidad > 0)
             {
-                jarraA.LLenarDesde(jarraB);
-                pgbJarraB.Value = jarraB.Cantidad;
-                pgbJarraA.Value = jarraA.Cantidad;
+                VolcarJarraBJarraA();
             }
+        }
+
+        private void VolcarJarraBJarraA()
+        {
+            jarraA.LLenarDesde(jarraB);
+            pgbJarraB.Value = jarraB.Cantidad;
+            pgbJarraA.Value = jarraA.Cantidad;
+            tbxPasos.Text += "Vuelco la jarra B a la jarra A \r\n";
         }
 
         private void btnJarraAJarraB_Click(object sender, RoutedEventArgs e)
         {
-            if (jarraA != null && jarraB != null)
+            if (Iniciadas() && jarraB.Capacidad > jarraB.Cantidad && jarraA.Cantidad > 0)
             {
-                jarraB.LLenarDesde(jarraA);
-                pgbJarraB.Value = jarraB.Cantidad;
-                pgbJarraA.Value = jarraA.Cantidad;
+                VolcarJarraAJarraB();
+            }
+        }
+
+        private void VolcarJarraAJarraB()
+        {
+            jarraB.LLenarDesde(jarraA);
+            pgbJarraB.Value = jarraB.Cantidad;
+            pgbJarraA.Value = jarraA.Cantidad;
+            tbxPasos.Text += "Vuelco la jarra A a la jarra B \r\n";
+        }
+
+        private bool Iniciadas()
+        {
+            return jarraA != null && jarraB != null;
+        }
+
+        private void btnDemo_Click(object sender, RoutedEventArgs e)
+        {
+            string capacidadA = "5";
+            string capacidadB = "7";
+            tbxJarraA.Text = capacidadA;
+            tbxJarraB.Text = capacidadB;
+            CrearJarras();
+            VaciarJarraB();
+            VolcarJarraAJarraB();
+            LlenarJarraA();
+            VolcarJarraAJarraB();
+            VaciarJarraB();
+            VolcarJarraAJarraB();
+            LlenarJarraA();
+            VolcarJarraAJarraB();
+        }
+
+        private void btnFinalizar_Click(object sender, RoutedEventArgs e)
+        {
+            if (Iniciadas())
+            {
+                jarraA = null;
+                jarraB = null;
+                tbxPasos.Text = string.Empty;
+                btnCrear.IsEnabled = true;
             }
         }
     }
