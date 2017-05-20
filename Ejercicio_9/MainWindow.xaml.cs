@@ -4,6 +4,7 @@ using System.Windows.Media.Imaging;
 //---------------------------------------------
 using System.Windows.Threading;
 using System.Threading;
+using System.IO;
 
 namespace Ejercicio_9
 {
@@ -52,7 +53,7 @@ namespace Ejercicio_9
 
         private void MostrarImagen(int indice)
         {
-            BitmapImage img = new BitmapImage(new Uri(imagenes[indice]));
+            BitmapImage img = new BitmapImage(new Uri(Path.GetFullPath(imagenes[indice])));
             imgDado.Source = img;
         }
 
