@@ -1,0 +1,41 @@
+﻿<Window x:Class="Ejercicio_21.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Juego con palabra" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox x:Name="tbxRuta" HorizontalAlignment="Center" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="160" Grid.Column="1" Margin="0"/>
+        <Label Content="Ruta" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16"/>
+        <DockPanel Grid.Column="2">
+            <Button x:Name="btnAbrir" Content="Abrir" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="btnAbrir_Click"/>
+            <Button x:Name="btnExaminar" Content="Examinar" HorizontalAlignment="center" VerticalAlignment="Center" Width="75" Click="btnExaminar_Click"/>
+        </DockPanel>
+        <Label Content="Palabra más larga:" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" FontSize="18" Grid.ColumnSpan="2" />
+        <Label x:Name="lblPalabraMax" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" FontSize="14"/>
+        <Label x:Name="lblLongitudMax" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" FontSize="14"/>
+        <Label x:Name="lblLineaMax" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontSize="14"/>
+        <Label Content="Palabra más corta:" HorizontalAlignment="Center" Grid.Row="3" VerticalAlignment="Center" FontSize="18" Grid.ColumnSpan="2" />
+        <Label x:Name="lblPalabraMin" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Center" FontSize="14"/>
+        <Label x:Name="lblLongitudMin" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center" FontSize="14"/>
+        <Label x:Name="lblLineaMin" HorizontalAlignment="Center" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" FontSize="14"/>
+        <Label Content="Palabra más repetida:" HorizontalAlignment="Right" Grid.Row="5" VerticalAlignment="Center" FontSize="14" />
+        <Label Content="Palabra menos repetida:" HorizontalAlignment="Right" Grid.Row="6" VerticalAlignment="Center" FontSize="14" />
+        <Label x:Name="lblPalabraMasVeces" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" FontSize="14"/>
+        <Label x:Name="lblMasVeces" HorizontalAlignment="Center" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" FontSize="14"/>
+        <Label x:Name="lblPalabraMenosVeces" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" FontSize="14"/>
+        <Label x:Name="lblMenosVeces" HorizontalAlignment="Center" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" FontSize="14"/>
+    </Grid>
+</Window>

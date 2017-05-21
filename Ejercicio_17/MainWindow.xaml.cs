@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 //---------------------------
-using System.Threading;
+using System.IO;
+
 namespace Ejercicio_17
 {
     /// <summary>
@@ -52,14 +42,14 @@ namespace Ejercicio_17
 
         private int MostrarDado1(int indice)
         {
-            BitmapImage img = new BitmapImage(new Uri(System.IO.Path.GetFullPath(imagenes[indice])));
+            BitmapImage img = new BitmapImage(new Uri(Path.GetFullPath(imagenes[indice])));
             imgDado1.Source = img;
             return indice;
         }
 
         private int MostrarDado2(int indice)
         {
-            BitmapImage img = new BitmapImage(new Uri(System.IO.Path.GetFullPath(imagenes[indice])));
+            BitmapImage img = new BitmapImage(new Uri(Path.GetFullPath(imagenes[indice])));
             imgDado2.Source = img;
             return indice;
         }
