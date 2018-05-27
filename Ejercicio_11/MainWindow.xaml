@@ -1,0 +1,51 @@
+﻿<Window x:Class="Ejercicio_11.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid HorizontalAlignment="Right" Width="517">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="51*"/>
+            <RowDefinition Height="52*"/>
+            <RowDefinition Height="131*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="169*"/>
+            <ColumnDefinition Width="348*"/>
+        </Grid.ColumnDefinitions>
+        <Menu HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="517" Grid.ColumnSpan="2">
+            <MenuItem Header="Configuración Inicial">
+                <MenuItem Header="Fuente">
+                    <MenuItem x:Name="mItemFuenteIniTMR" Header="Times New Roman"/>
+                    <MenuItem x:Name="mItemFuenteIniArial" Header="Arial"/>
+                    <MenuItem x:Name="mItemFuenteIniVerdana" Header="Verdana"/>
+                </MenuItem>
+                <MenuItem Header="Estilo Fuente">
+                    <MenuItem x:Name="mItemEstiloIniNormal" Header="Normal"/>
+                    <MenuItem x:Name="mItemEstiloIniCursiva" Header="Cursiva" />
+                </MenuItem>
+                <MenuItem Header="Color Fuente">
+                    <MenuItem x:Name="mItemColorIniNegro" Header="Negro"/>
+                    <MenuItem x:Name="mItemColorIniAmarillo" Header="Amarillo"/>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Configuración Ratón">
+                <MenuItem Header="Fuente">
+                    <MenuItem x:Name="mItemFuenteRatTMR" Header="Times New Roman"/>
+                    <MenuItem x:Name="mItemFuenteRatArial" Header="Arial"/>
+                    <MenuItem x:Name="mItemFuenteRatVerdana" Header="Verdana"/>
+                </MenuItem>
+                <MenuItem Header="Estilo Fuente">
+                    <MenuItem x:Name="mItemEstiloRatNormal" Header="Normal"/>
+                    <MenuItem x:Name="mItemEstiloRatCursiva" Header="Cursiva"/>
+                </MenuItem>
+                <MenuItem Header="Color Fuente">
+                    <MenuItem x:Name="mItemColorRatNegro" Header="Negro"/>
+                    <MenuItem x:Name="mItemColorRatAmarillo" Header="Amarillo"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <Label Content="Esta es una frase más" HorizontalAlignment="Left"  Grid.Row="1" VerticalAlignment="Top" Grid.Column="1" MouseEnter="Label_MouseEnter"/>
+
+    </Grid>
+</Window>
